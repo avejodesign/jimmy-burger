@@ -57,7 +57,8 @@
     section.duvidas a { background: #00E01A; color: black; padding: 2px 8px; display: flex; align-items: center; justify-content: center; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 600; }
 
     .section{ margin:26px 0 8px }
-    .section h2{ font-size:22px; margin:0 0 14px; font-weight:600 }
+    .section:nth-child(1){ margin-top:0 }
+    .section h2{ font-size:22px; margin:0 0 14px; font-weight:600; background: #FFF83E; padding: 6px 14px; border-radius: 8px;}
 
     .grid{ display:grid; gap:16px; grid-template-columns:repeat(1, minmax(0,1fr)) }
     @media (min-width:560px){ .grid{ grid-template-columns:repeat(2, minmax(0,1fr)) } }
@@ -233,45 +234,49 @@
     // - Se não tiver variants: usa product.price normalmente
     const PRODUCTS = [
       // Burgers COM variantes (exemplos prontos para editar):
-      { id:"b1", name:"Jimmy Clássico", desc:"Pão brioche, Burger, cheddar, alface, tomate, picles, maionese da casa.", img:"./assets/fotos/classico.png", cat:"Burgers",price:1990
+      { id:"b1", name:"Jimmy Clássico", desc:"Pão  brioche,  Burger  120g,  queijo cheddar, alface, tomate, picles, cebola roxa defumada e maionese da casa.", img:"./assets/fotos/classico.png", cat:"Burgers Clássicos",price:1990
       },
-      { id:"b2", name:"Jimmy Bacon Salad", desc:"Brioche, 2x burger, bacon, cheddar, alface, tomate, maionese da casa.", img:"./assets/fotos/bacon-salad.png", cat:"Burgers", price:2490
+      { id:"b2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 120g, bacon, cheddar, alface, tomate, maionese da casa.", img:"./assets/fotos/bacon-salad.png", cat:"Burgers Clássicos", price:2490
       },
-      { id:"b3", name:"Jimmy Duplo Bacon", desc:"Brioche, 2x burger, cheddar, Bacon artesanal, cebola roxa defumada e maionese.", img:"./assets/fotos/duplo.png", cat:"Burgers", 
+      { id:"b3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger, cheddar, Bacon artesanal, cebola roxa defumada e maionese da casa", img:"./assets/fotos/duplo.png", cat:"Burgers Clássicos", 
         variants:[{ id:"carne", title:"Quantidade e peso da carne", type:"single", required:true,
-          options:[ {id:"2x90", label:"2x 90g", price:2890}, {id:"2x120", label:"2x 120g", price:3290} ] }]
+          options:[ {id:"2x80", label:"2x 80g", price:2890}, {id:"2x120", label:"2x 120g", price:3390} ] }]
       },
-      { id:"b7", name:"Jimmy Duplo Salad", desc:"Brioche, 2x burger, bacon, cheddar, alface, tomate, cebola roxa e maionese.", img:"./assets/fotos/jimmy-duplo-salad.png", cat:"Burgers",
+      { id:"b7", name:"Jimmy Duplo Bacon Salad", desc:"Pão Brioche, 2x burger, bacon, cheddar, alface, tomate, cebola roxa e maionese da casa", img:"./assets/fotos/jimmy-duplo-salad.png", cat:"Burgers Clássicos",
         variants:[{ id:"carne", title:"Quantidade e peso da carne", type:"single", required:true,
-          options:[ {id:"2x90", label:"2x 90g", price:2990}, {id:"2x120", label:"2x 120g", price:3490} ] }]
+          options:[ {id:"2x80", label:"2x 80g", price:2990}, {id:"2x120", label:"2x 120g", price:3490} ] }]
       },
-      { id:"b4", name:"Jimmy Duplo Crispy", desc:"Brioche, 2x burger, cebola crispy, bacon, alface, tomate, maionese.", img:"./assets/fotos/jimmy-duplo-crispy.png", cat:"Burgers Especiais",
+      { id:"b4", name:"Jimmy Duplo Crispy", desc:"Pão Brioche, 2x burger, cebola crispy, bacon, alface, tomate e maionese da casa", img:"./assets/fotos/jimmy-duplo-crispy.png", cat:"Burgers Especiais",
         variants:[{ id:"carne", title:"Quantidade e peso da carne", type:"single", required:true,
           options:[ {id:"2x90", label:"2x 90g", price:3190}, {id:"2x120", label:"2x 120g", price:3590} ] }]
       },
-      { id:"b5", name:"Jimmy Bacon Catupiry", desc:"Brioche, burger, Catupiry empanado, bacon, cheddar, alface, tomate, mel e maionese.", img:"./assets/fotos/catupiry.png", cat:"Burgers Especiais",
+      { id:"b5", name:"Jimmy Bacon Catupiry", desc:"Pão Brioche, burger, Catupiry empanado, bacon, cheddar, alface, tomate, mel e maionese da casa", img:"./assets/fotos/catupiry.png", cat:"Burgers Especiais",
         variants:[{ id:"carne", title:"Quantidade e peso da carne", type:"single", required:true,
           options:[ {id:"1x120", label:"1x 120g", price:3490}, {id:"1x180", label:"1x 180g", price:3790} ] }]
       },
-      { id:"b7", name:"Jimmy Burger", desc:"Pão brioche, 1 Burger 180g, queijo cheddar e maionese da casa.", img:"./assets/fotos/jimmy-burger.png", cat:"Burgers Especiais", price:2490
+      {id:"b10", name:"Jimmy Triplo Bacon", desc:"Pão brioche, 03 Burgers 80g, Bacon artesanal, queijo cheddar, cebola roxa defumada, picles e maionese da casa.", img:"./assets/fotos/triplo.png", cat:"Burgers Especiais",
+        variants:[{ id:"carne", title:"Quantidade e peso da carne", type:"single", required:true,
+          options:[ {id:"3x90", label:"3x 80g", price:3490}, {id:"3x120", label:"3x 120g", price:3990} ] }]
       },
-      { id:"b8", name:"Dr. Bacon (Goodman)", desc:"Pão brioche, 1 Burger 180g, queijo cheddar, bacon defumado cebola grelhada e maionese da casa.", img:"./assets/fotos/dr-bacon.png", cat:"Burgers Especiais", price:2990
+
+      { id:"b7", name:"Jimmy Burger", desc:"Pão brioche, 1 Burger 180g, queijo cheddar e maionese da casa.", img:"./assets/fotos/jimmy-burger.png", cat:"Burgers Gourmet", price:2490},
+
+      { id:"b8", name:"Dr. Bacon (Goodman)", desc:"Pão brioche, 1 Burger 180g, queijo cheddar, bacon defumado cebola grelhada e maionese da casa.", img:"./assets/fotos/dr-bacon.png", cat:"Burgers Gourmet", price:2990
       },
-      { id:"b9", name:"Jimmy da Recaída", desc:"Pão brioche, 2 Burger 180g, queijo cheddar, bacon defumado alface, tomate, cebola grelhada picles e maionese da casa.", img:"./assets/fotos/jimmy-recaida.png", cat:"Burgers Especiais", price:3890
+      { id:"b9", name:"Jimmy da Recaída", desc:"Pão brioche, 2 Burger 180g, queijo cheddar, bacon defumado alface, tomate, cebola grelhada picles e maionese da casa.", img:"./assets/fotos/jimmy-recaida.png", cat:"Burgers Gourmet", price:3890
       },
 
       // Combos (sem variantes, mantém price como antes)
       {id:"c1", name:"Combo Clássico", desc:"1 Jimmy Clássico + Fritas + Refri", price:2990, img:"./assets/fotos/combo-classico.png", cat:"Combos"},
       {id:"c2", name:"Combo Duplo Bacon", desc:"1 duplo bacon + fritas + refri", price:3700, img:"./assets/fotos/combo-duplo.png", cat:"Combos"},
-      {id:"c3", name:"Combo Bacon Salad", desc:"1 bacon salad + fritas + refri", price:3700, img:"./assets/fotos/bacon-salad.png", cat:"Combos"},
       {id:"c4", name:"Combo Casal", desc:"2 Clássicos + fritas + 1 Guaraná 1L", price:4990, img:"./assets/fotos/casal.png", cat:"Para compartilhar"},
       {id:"c5", name:"Combo Família", desc:"4 Clássicos + 1 Guaraná 1L", price:7990, img:"./assets/fotos/familia.png", cat:"Para compartilhar"},
 
       // Petiscos
-      {id:"a1", name:"Fritas Individual 120g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"Petiscos Saborosos"},
-      {id:"a2", name:"Fritas Média 250g", desc:"Porção média", price:1980, img:"./assets/fotos/fritas.png", cat:"Petiscos Saborosos"},
-      {id:"a3", name:"Coxinha de Frango (7 un)", desc:"Tamanho pequeno", price:990, img:"./assets/fotos/coxinha.png", cat:"Petiscos Saborosos"},
-      {id:"a4", name:"Coxinha de Frango (15 un)", desc:"Tamanho pequeno", price:1980, img:"./assets/fotos/coxinha.png", cat:"Petiscos Saborosos"},
+      {id:"a1", name:"Fritas Individual 150g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"Petiscos Saborosos"},
+      {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1980, img:"./assets/fotos/fritas.png", cat:"Petiscos Saborosos"},
+      {id:"a3", name:"Fritas com Cheddar e Bacon 200g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"Petiscos Saborosos"},
+      {id:"a4", name:"Fritas Média com Cheddar e Bacon 300g", desc:"Porção média", price:1980, img:"./assets/fotos/fritas.png", cat:"Petiscos Saborosos"},
 
       // Bebidas
       {id:"d1", name:"Coca-Cola Lata", desc:"350ml", price:680, img:"./assets/fotos/coca-lata.png", cat:"Bebidas"},
@@ -300,7 +305,7 @@
       { id:"refri200", name:"Refri pequeno 200ml",   price:400 },
     ];
     const EXTRAS_BY_CAT = {
-      "Burgers": DEFAULT_EXTRAS,
+      "Burgers Clássicos": DEFAULT_EXTRAS,
       "Burgers Especiais": DEFAULT_EXTRAS,
       "Combos": [],
       "Petiscos Saborosos": [],
