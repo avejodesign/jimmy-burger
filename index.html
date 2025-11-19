@@ -377,7 +377,7 @@
           const m = Math.min(...grp.options.map(o=>o.price||0));
           return acc + (Number.isFinite(m)?m:0);
         }, 0);
-        return `A partir de ${fmtBRL(min)}`;
+        return `${fmtBRL(min)}`;
       }
       return fmtBRL(p.price);
     }
