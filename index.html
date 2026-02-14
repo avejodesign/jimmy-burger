@@ -68,9 +68,9 @@
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content: space-between; cursor:pointer; }
     /* .box-thumb{width: fit-content; overflow: hidden; } */
     .thumb{ aspect-ratio:16/10; width:100%; object-fit:cover; overflow: hidden; display: block;}
-    .info{ padding:14px 14px 12px; display:flex; flex-direction:column; gap:10px; width: 100%;}
+    .info{ padding:14px 14px 12px; display:flex; flex-direction:column; gap:10px; width: 100%; justify-content: space-between; height: 100%}
     .title{ font-size:16px; margin:0; letter-spacing:.2px; color:var(--text) }
-    .desc{ font-size:13px; color:var(--muted); margin:0 }
+    .desc{  font-size:13px; color:var(--muted); margin:0; text-transform: uppercase; }
     .priceRow{ display:flex; align-items:center; justify-content:space-between }
     .price{ font-weight:600 }
 
@@ -112,12 +112,12 @@
     /* Lista mobile com thumb à direita */
     .points{display:none; align-items:center; gap:6px; font-size:12px; color:var(--brand)}
     .points .gift{width:16px; height:16px; fill:var(--brand)}
+    .title{ font-size:14px; text-transform:uppercase; letter-spacing:.2px;}
     @media (max-width:560px){
       .card{ flex-direction:row-reverse; align-items:center }
+      .desc{ font-size:11px; text-transform:uppercase; color:var(--muted); line-height:1.25; display: -webkit-box; -webkit-line-clamp: 3 !important; -webkit-box-orient: vertical; overflow: hidden;}
       .thumb{ width:140px; height:140px; aspect-ratio:1/1; border-radius:12px;  object-fit:cover }
       .info{ padding:12px; gap:6px }
-      .title{ font-size:14px; text-transform:uppercase; letter-spacing:.2px; }
-      .desc{ font-size:11px; text-transform:uppercase; color:var(--muted); line-height:1.25; display: -webkit-box; -webkit-line-clamp: 3 !important; -webkit-box-orient: vertical; overflow: hidden;}
       .priceRow{ margin-top:2px }
       .points{ display:flex }
     }
@@ -236,43 +236,54 @@
     // - Se não tiver variants: usa product.price normalmente
     const PRODUCTS = [
       // Burgers COM variantes (exemplos prontos para editar):
-      { id:"b1", name:"Jimmy Clássico", desc:"Pão  brioche,  Burger  120g,  queijo cheddar, alface, tomate, picles, cebola roxa defumada e maionese da casa.", img:"./assets/fotos/classico.png", cat:"BURGERS",price:1990
+      { id:"h1", name:"Jimmy Clássico 2.0", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-2.png", cat:"Mais pedidos",price:2490
       },
-      { id:"b2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 120g, bacon, cheddar, alface, tomate, cebola roxa defumada e maionese da casa.", img:"./assets/fotos/bacon-salad.png", cat:"BURGERS", price:2490
+      { id:"h2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-salad.png", cat:"Mais pedidos", price:2890
       },
-      { id:"b3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa defumada e maionese da casa", img:"./assets/fotos/duplo.png", cat:"BURGERS", 
-        variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
-          options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 120g", price:3390} ] }]
+      { id:"h3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa caramelizada e maionese da casa", img:"./assets/fotos/duplo.png", cat:"Mais pedidos", 
+        // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
+        //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 120g", price:3390} ] }]
+      price: 2790},
+      { id:"h4", name:"Combo Casal 2.0", desc:"Pão Brioche, 2 Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"Mais pedidos", price:2890
       },
-      { id:"b7", name:"Jimmy Duplo Bacon Salad", desc:"Pão Brioche, 2x burger 80g, bacon, cheddar, alface, tomate, cebola roxa e maionese da casa", img:"./assets/fotos/jimmy-duplo-salad.png", cat:"BURGERS",
-        variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
-          options:[ {id:"2x80", label:"2x 80g", price:2990}, {id:"2x120", label:"2x 120g", price:3490} ] }]
+      { id:"y1", name:"Jimmy Burguer", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-burger.png", cat:"CLÁSSICOS (Burger 150g)",price:2290
       },
-      { id:"b4", name:"Jimmy Duplo Crispy", desc:"Pão Brioche, 2x burger 80g, cebola crispy, bacon, alface, tomate e maionese da casa", img:"./assets/fotos/jimmy-duplo-crispy.png", cat:"BURGERS",
-        variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
-          options:[ {id:"2x90", label:"2x 80g", price:3190}, {id:"2x120", label:"2x 120g", price:3590} ] }]
+      { id:"f1", name:"Jimmy Clássico 2.0", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-2.png", cat:"CLÁSSICOS (Burger 150g)",price:2490
       },
-      { id:"b5", name:"Jimmy Catupiry", desc:"Pão Brioche, 1x burger 120g, Catupiry empanado, bacon, cheddar, alface, tomate, mel e maionese da casa", img:"./assets/fotos/jimmy-duplo-crispy-1.png", cat:"BURGERS",
-        variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
-          options:[ {id:"1x120", label:"1x 120g", price:3490}, {id:"1x180", label:"2x 120g", price:3990} ] }]
+      { id:"f2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/fotos/bacon-salad.png", cat:"CLÁSSICOS (Burger 150g)", price:2890
       },
-      {id:"b10", name:"Jimmy Triplo Bacon", desc:"Pão brioche, 3x burger 80g, Bacon artesanal, queijo cheddar, cebola roxa defumada, picles e maionese da casa.", img:"./assets/fotos/triplo.png", cat:"BURGERS",
-        variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
-          options:[ {id:"3x90", label:"3x 80g", price:3490}, {id:"3x120", label:"3x 120g", price:3990} ] }]
+      { id:"f3", name:"Jimmy Bacon Onion", desc:"Pão Brioche, Burger 150g, Bacon, Onion Ring (Cebola Crocante), cheddar, alface, tomate e maionese da casa.", img:"./assets/novas-fotos/jimmy-onion.png", cat:"CLÁSSICOS (Burger 150g)", price:3290
       },
-
-      // { id:"b7", name:"Jimmy Burger", desc:"Pão brioche, 1 Burger 180g, queijo cheddar e maionese da casa.", img:"./assets/fotos/jimmy-burger.png", cat:"Burgers Gourmet", price:2490},
-
-      // { id:"b8", name:"Dr. Bacon (Goodman)", desc:"Pão brioche, 1 Burger 180g, queijo cheddar, bacon defumado cebola grelhada e maionese da casa.", img:"./assets/fotos/dr-bacon.png", cat:"Burgers Gourmet", price:2990
-      // },
-      // { id:"b9", name:"Jimmy da Recaída", desc:"Pão brioche, 2 Burger 180g, queijo cheddar, bacon defumado alface, tomate, cebola grelhada picles e maionese da casa.", img:"./assets/fotos/jimmy-recaida.png", cat:"Burgers Gourmet", price:3890
-      // },
-
-      // Combos (sem variantes, mantém price como antes)
-      {id:"c1", name:"Combo Clássico", desc:"1 Jimmy Clássico + Fritas + Refri", price:2990, img:"./assets/fotos/combo-classico.png", cat:"COMBOS"},
-      {id:"c2", name:"Combo Duplo Bacon", desc:"1 duplo bacon + fritas + refri", price:3780, img:"./assets/fotos/combo-duplo.png", cat:"COMBOS"},
-      {id:"c4", name:"Combo Casal", desc:"2 Clássicos + fritas + Guaraná 1L", price:4990, img:"./assets/fotos/casal.png", cat:"COMBOS"},
-      {id:"c5", name:"Combo Família", desc:"4 Clássicos + Guaraná 1L", price:7990, img:"./assets/fotos/familia.png", cat:"COMBOS"},
+      { id:"b5", name:"Jimmy Catupiry", desc:"Pão Brioche, burger 150g, Catupiry empanado, bacon, cheddar, alface, tomate, mel e maionese da casa", img:"./assets/novas-fotos/jimmy-catupiry.png", cat:"CLÁSSICOS (Burger 150g)",
+        // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
+        //   options:[ {id:"1x120", label:"1x 150g", price:3590}, {id:"1x180", label:"2x 150g", price:4490} ] }]
+      price: 3590},
+      { id:"u1", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2 Burger 150g, Bacon, Cebola Caramelizada, Picles, cheddar e maionese da casa.", img:"./assets/fotos/duplo.png", cat:"CLÁSSICOS (Burger 150g)", price:3590
+      },
+      { id:"b1", name:"Jimmy Clássico Smash", desc:"Pão  brioche,  Burger  100g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-smash.png", cat:"BURGERS SMASH (Burger 80g)",price:1990
+      },
+      { id:"b2", name:"Jimmy Duplo", desc:"Pão Brioche, 2 Burgers 80g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/fotos/bacon-salad.png", cat:"BURGERS SMASH (Burger 80g)", price:2490
+      },
+      { id:"b3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa caramelizada e maionese da casa", img:"./assets/fotos/duplo.png", cat:"BURGERS SMASH (Burger 80g)", 
+        // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
+        //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 150g", price:3490} ] }]
+      price: 2790},
+      { id:"b7", name:"Jimmy Duplo Onion", desc:"Pão Brioche, 2x burger 80g, Onion Ring (Cebola Crocante), bacon, cheddar, alface, tomate, cebola roxa e maionese da casa", img:"./assets/novas-fotos/jimmy-duplo-onion.png", cat:"BURGERS SMASH (Burger 80g)", price: 3290},
+      
+      {id:"b10", name:"Jimmy Triplo Bacon", desc:"Pão brioche, 3x burger 80g, Bacon artesanal, queijo cheddar, cebola roxa caramelizada, picles e maionese da casa.", img:"./assets/fotos/triplo.png", cat:"BURGERS SMASH (Burger 80g)",
+      // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
+      // options:[ {id:"3x90", label:"3x 80g", price:3490}, {id:"3x120", label:"3x 150g", price:3990} ] }]
+      price: 3490},
+      { id:"b4", name:"Jimmy Duplo Catupiry", desc:"Pão Brioche, 2x burger 80g, Catupiry Empanado, bacon, alface, tomate e maionese da casa", img:"./assets/novas-fotos/duplo-catupiry.png", cat:"BURGERS SMASH (Burger 80g)", price: 3790},
+      {id:"c1", name:"Combo Clássico 2.0", desc:"1 Jimmy Clássico 2.0 + Fritas + Refri", price:3690, img:"./assets/novas-fotos/combo-classico-2.png", cat:"COMBOS INDIVIDUAIS"},
+      {id:"c2", name:"Combo Duplo Bacon", desc:"1 duplo bacon + fritas + refri", price:3990, img:"./assets/fotos/combo-duplo.png", cat:"COMBOS INDIVIDUAIS"},
+      {id:"c6", name:"Combo Bacon Salad", desc:"1 bacon salad + fritas + refri", price:3990, img:"./assets/novas-fotos/combo-bacon-salad.png", cat:"COMBOS INDIVIDUAIS"},
+      {id:"c8", name:"Combo Casal 2.0", desc:"2 Clássicos 2.0 + fritas + Guaraná 1L", price:6490, img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL"},
+      {id:"c7", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"COMBO CASAL"},
+      {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + fritas + Guaraná 1L", price:4990, img:"./assets/fotos/casal.png", cat:"COMBO CASAL"},
+      {id:"c9", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9790, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA"},
+      {id:"c10", name:"Combo Família Bacon", desc:"4 Bacon Salad + Guaraná 1L", price:11890, img:"./assets/novas-fotos/combo-familia-bacon.png", cat:"COMBO FAMILIA"},
+      {id:"c5", name:"Combo Família Smash", desc:"4 Clássicos Smash + Guaraná 1L", price:7990, img:"./assets/fotos/familia.png", cat:"COMBO FAMILIA"},
 
       // Petiscos
       {id:"a1", name:"Fritas Individual 150g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"FRITAS"},
@@ -305,10 +316,10 @@
     // —— EXTRAS ——
     const DEFAULT_EXTRAS = [
       // { id:"hamb120",  name:"Hambúrguer extra 120g", price:990 },
+      { id:"fritasrefri", name:"Fritas + Refri Lata",   price:1490 },
       { id:"fritas",   name:"Fritas individual",     price:990 },
       { id:"refri",    name:"Refri lata 350ml",      price:680 },
       { id:"maionese", name:"Maionese da Casa",      price:200 },
-      { id:"refri200", name:"Refri pequeno 200ml",   price:400 },
     ];
     const EXTRAS_BY_CAT = {
       "BURGERS": DEFAULT_EXTRAS,
