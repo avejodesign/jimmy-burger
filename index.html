@@ -244,7 +244,7 @@
       //   // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
       //   //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 120g", price:3390} ] }]
       // price: 2790},
-      { id:"h4", name:"Combo Casal 2.0", desc:"Pão Brioche, 2 Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"MAIS PEDIDOS", price:6490
+      { id:"h4", name:"Combo Casal 2.0", desc:"Pão Brioche, 2 Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"MAIS PEDIDOS", ignoreExtras: true, price:6490
       },
       { id:"y1", name:"Jimmy Burguer", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-burger.png", cat:"CLÁSSICOS (Burger 150g)",price:2290
       },
@@ -268,6 +268,10 @@
         // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
         //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 150g", price:3490} ] }]
       price: 2790},
+      { id:"b10", name:"Jimmy Duplo Bacon Salad", desc:"Pão brioche, 2 Burgers 80g, cheddar, Bacon artesanal, alface, tomate, cebola roxa defumada e maionese da casa.", img:"./assets/novas-fotos/jimmy-duplo-bacon-salad.png", cat:"BURGERS SMASH (Burger 80g)", 
+        // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
+        //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 150g", price:3490} ] }]
+      price: 2990},
       { id:"b7", name:"Jimmy Duplo Onion", desc:"Pão Brioche, 2x burger 80g, Onion Ring (Cebola Crocante), bacon, cheddar, alface, tomate, cebola roxa e maionese da casa", img:"./assets/novas-fotos/jimmy-duplo-onion.png", cat:"BURGERS SMASH (Burger 80g)", price: 3290},
       
       {id:"b10", name:"Jimmy Triplo Bacon", desc:"Pão brioche, 3x burger 80g, Bacon artesanal, queijo cheddar, cebola roxa caramelizada, picles e maionese da casa.", img:"./assets/novas-fotos/jimmy-triplo.png", cat:"BURGERS SMASH (Burger 80g)",
@@ -280,10 +284,10 @@
       {id:"c6", name:"Combo Bacon Salad", desc:"1 bacon salad + fritas + refri", price:3990, img:"./assets/novas-fotos/combo-bacon-salad.png", cat:"COMBOS INDIVIDUAIS"},
       {id:"c8", name:"Combo Casal 2.0", desc:"2 Clássicos 2.0 + fritas + Guaraná 1L", price:6490, img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL"},
       {id:"c7", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"COMBO CASAL"},
-      {id:"c20", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"MAIS PEDIDOS"},
+      {id:"c20", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", ignoreExtras: true, cat:"MAIS PEDIDOS"},
       {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + fritas + Guaraná 1L", price:4990, img:"./assets/novas-fotos/combo-casal-smash.png", cat:"COMBO CASAL"},
       {id:"c9", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9790, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA"},
-      {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9790, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"MAIS PEDIDOS"},
+      {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9790, img:"./assets/novas-fotos/combo-familia-classico-2.png", ignoreExtras: true, cat:"MAIS PEDIDOS"},
       {id:"c10", name:"Combo Família Bacon", desc:"4 Bacon Salad + Guaraná 1L", price:11890, img:"./assets/novas-fotos/combo-familia-bacon.png", cat:"COMBO FAMILIA"},
       {id:"c5", name:"Combo Família Smash", desc:"4 Clássicos Smash + Guaraná 1L", price:7990, img:"./assets/novas-fotos/combo-familia-smash.png", cat:"COMBO FAMILIA"},
 
@@ -318,16 +322,19 @@
     // —— EXTRAS ——
     const DEFAULT_EXTRAS = [
       // { id:"hamb120",  name:"Hambúrguer extra 120g", price:990 },
-      { id:"fritasrefri", name:"Fritas + Refri Lata",   price:1490 },
-      { id:"fritas",   name:"Fritas individual",     price:990 },
-      { id:"refri",    name:"Refri lata 350ml",      price:680 },
+      { id:"fritasrefri", name:"Combo (Fritas + Refri Lata)",   price:1490 },
+      { id:"salada", name:"Salada",      price:200 },
+      { id:"maionese", name:"Ovo",      price:200 },
       { id:"maionese", name:"Maionese da Casa",      price:200 },
+      { id:"maionese", name:"Bacon Extra",      price:590 },
+      { id:"maionese", name:"Burger 80g",      price:690 },
+      { id:"maionese", name:"Burger 150g",      price:990 },
     ];
     const EXTRAS_BY_CAT = {
-      "BURGERS": DEFAULT_EXTRAS,
-      "COMBOS": [],
-      "FRITAS": [],
-      "Bebidas": []
+      "CLÁSSICOS (Burger 150g)": DEFAULT_EXTRAS,
+      "BURGERS SMASH (Burger 80g)": DEFAULT_EXTRAS,
+      "MAIS PEDIDOS": DEFAULT_EXTRAS,
+      "COMBOS INDIVIDUAIS": DEFAULT_EXTRAS,
     };
     function getExtrasFor(product){ return EXTRAS_BY_CAT[product.cat] || []; }
 
@@ -579,7 +586,7 @@
 
     function openProductModal(id){
       const p = PRODUCTS.find(x=>x.id===id);
-      const extras = getExtrasFor(p);
+      const extras = p.ignoreExtras ? [] : getExtrasFor(p);
 
       // estado inicial das variantes
       const selectedVariants = new Map();
