@@ -61,11 +61,11 @@
     .section:nth-child(1){ margin-top:0 }
     .section h2{ font-size:18px; margin:0 0 14px; font-weight:600; background: #FFF83E; padding: 6px 14px; border-radius: 8px;}
 
-    .grid{ display:grid; gap:16px; grid-template-columns:repeat(1, minmax(0,1fr)) }
+    .grid{ display:grid; gap:10px; grid-template-columns:repeat(1, minmax(0,1fr)) }
     @media (min-width:560px){ .grid{ grid-template-columns:repeat(2, minmax(0,1fr)) } }
     @media (min-width:920px){ .grid{ grid-template-columns:repeat(3, minmax(0,1fr)) } }
 
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content: space-between; cursor:pointer; }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; justify-content: space-between; cursor:pointer; }
     /* .box-thumb{width: fit-content; overflow: hidden; } */
     .thumb{ aspect-ratio:16/10; width:100%; object-fit:cover; overflow: hidden; display: block;}
     .info{ padding:14px 14px 12px; display:flex; flex-direction:column; gap:10px; width: 100%; justify-content: space-between; height: 100%}
@@ -115,8 +115,17 @@
     .title{ font-size:14px; text-transform:uppercase; letter-spacing:.2px;}
     @media (max-width:560px){
       .card{ flex-direction:row-reverse; align-items:center }
-      .desc{ font-size:11px; text-transform:uppercase; color:var(--muted); line-height:1.25; display: -webkit-box; -webkit-line-clamp: 3 !important; -webkit-box-orient: vertical; overflow: hidden;}
-      .thumb{ width:140px; height:140px; aspect-ratio:1/1; border-radius:12px;  object-fit:cover }
+      .desc{ font-size:11px; text-transform:uppercase; color:var(--muted); line-height:1.25; display: -webkit-box; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical; overflow: hidden;}
+      .thumb{ width:100px; height:100px; aspect-ratio:1/1; border-radius:12px; margin-right: 6px; object-fit:cover }
+
+      #cat-mais-pedidos .box-thumb { 
+        width: 100%;
+      } 
+
+      #cat-mais-pedidos .thumb { 
+        border-radius: 0;
+      }
+
       .info{ padding:12px; gap:6px }
       .priceRow{ margin-top:2px }
       .points{ display:flex }
@@ -147,6 +156,66 @@
 
     /* Botão 'Ver sacola' */
     .bagBtn{ position:fixed; right: 20px; bottom:64px; z-index:1; display:none; padding:14px 18px; background:#ff0012; color:white; border:none; font-size:14px; border-radius:999px; font-weight:700; box-shadow:var(--shadow); cursor:pointer; font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial; }
+
+    /* Estilo para o Slide de Mais Pedidos */
+    #cat-mais-pedidos .grid {
+      display: flex; /* Muda de grid para flex para alinhar lado a lado */
+      flex-wrap: nowrap; /* Impede que os itens pulem para a linha de baixo */
+      overflow-x: auto; /* Habilita o scroll horizontal */
+      padding: 0 20px;
+      gap: 4px;
+      scroll-snap-type: x mandatory; /* Faz o efeito de 'imã' ao deslizar */
+      -webkit-overflow-scrolling: touch;
+      margin-right: -20px;
+      /* margin-left: -20px; */
+      padding-right: 20px;
+    }
+
+    #cat-mais-pedidos .grid::-webkit-scrollbar {
+      display: none; /* Esconde a barra de rolagem para ficar limpo como no AnotaAI */
+    }
+
+    #cat-mais-pedidos .card {
+      min-width: 160px; /* Largura fixa para os cards no slide */
+      max-width: 160px;
+      flex-direction: column !important; /* Força ficar vertical mesmo no mobile */
+      scroll-snap-align: start;
+    }
+
+    #cat-mais-pedidos .card:first-child {
+      margin-left: 20px; /* Espaço extra para o primeiro item */
+    }
+
+    #cat-mais-pedidos .thumb {
+      width: 100% !important;
+      height: 120px !important;
+      aspect-ratio: 1/1 !important;
+    }
+
+    #cat-mais-pedidos .info {
+      padding: 8px;
+      height: auto;
+    }
+
+    #cat-mais-pedidos .desc {
+      display: none; /* Esconde a descrição no slide para manter compacto */
+    }
+
+    #cat-mais-pedidos .title {
+      font-size: 13px;
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 38px;
+    }
+
+    #cat-mais-pedidos .btn.btn-primary {
+      display:  none;
+    }
+
+
   </style>
 </head>
 <body>
@@ -240,6 +309,9 @@
       },
       { id:"h2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-salad.png", cat:"MAIS PEDIDOS", price:2890
       },
+
+      { id:"u3", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"MAIS PEDIDOS", price:3590
+      },
       // { id:"h3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa caramelizada e maionese da casa", img:"./assets/novas-fotos/jimmy-duplo-bacon.png", cat:"MAIS PEDIDOS", 
       //   // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
       //   //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 120g", price:3390} ] }]
@@ -260,17 +332,17 @@
       price: 3590},
       { id:"u1", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"CLÁSSICOS (Burger alto 150g)", price:3590
       },
-      { id:"b1", name:"Jimmy Clássico Smash", desc:"Pão  brioche,  Burger  100g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-smash.png", cat:"BURGER SMASH (Burger fino 80g a 100g)",price:1990
+
+      
+      { id:"b1", name:"Clássico Smash", desc:"Pão  brioche,  Burger  100g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-smash.png", cat:"BURGER SMASH (Burger fino 80g a 100g)",price:1990
       },
-      { id:"b20", name:"Jimmy Bacon Salad Smash", desc:"Pão  brioche,  Burger  100g, bacon, queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-smash.png", cat:"BURGER SMASH (Burger fino 80g a 100g)",price:1990
-      },
-      { id:"b2", name:"Jimmy Duplo", desc:"Pão brioche, 1 Burger 150g, cheddar, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-duplo.png", cat:"BURGER SMASH (Burger fino 80g a 100g)", price:2490
+      { id:"b20", name:"Bacon Salad Smash", desc:"Pão  brioche,  Burger  100g, bacon, queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-smash.png", cat:"BURGER SMASH (Burger fino 80g a 100g)",price:2490
       },
       { id:"b3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa caramelizada e maionese da casa", img:"./assets/novas-fotos/jimmy-duplo-bacon.png", cat:"BURGER SMASH (Burger fino 80g a 100g)", 
         // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
         //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 150g", price:3490} ] }]
       price: 2790},
-      { id:"b10", name:"Jimmy Duplo Bacon Salad", desc:"Pão brioche, 2 Burgers 80g, cheddar, Bacon artesanal, alface, tomate, cebola roxa defumada e maionese da casa.", img:"./assets/novas-fotos/jimmy-duplo-bacon-salad.png", cat:"BURGER SMASH (Burger fino 80g a 100g)", 
+      { id:"b10", name:"Jimmy Duplo Salad", desc:"Pão brioche, 2 Burgers 80g, cheddar, Bacon artesanal, alface, tomate, cebola roxa defumada e maionese da casa.", img:"./assets/novas-fotos/jimmy-duplo-bacon-salad.png", cat:"BURGER SMASH (Burger fino 80g a 100g)", 
         // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
         //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 150g", price:3490} ] }]
       price: 2990},
@@ -294,12 +366,12 @@
       {id:"c5", name:"Combo Família Smash", desc:"4 Clássicos Smash + Guaraná 1L", price:7990, img:"./assets/novas-fotos/combo-familia-smash.png", cat:"COMBO FAMILIA"},
 
       // Petiscos
-      {id:"a1", name:"Fritas Individual 150g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"FRITAS"},
-      {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1990, img:"./assets/fotos/fritas.png", cat:"FRITAS"},
-      {id:"a3", name:"Onion Ring 7 Unidades", desc:"7 Unidades de Onion Ring", price:1490, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"FRITAS"},
-      {id:"a4", name:"Onion Ring 14 Unidades", desc:"14 Unidades de Onion Ring", price:2790, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"FRITAS"},
-      {id:"a5", name:"Batata Cheddar e Bacon 150g ", desc:"Porção individual de batata cheddar e bacon", price:1590, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS"},
-      {id:"a6", name:"Batata Cheddar e Bacon 300g ", desc:"Porção média de batata cheddar e bacon", price:2990, img:"./assets/novas-fotos/batata-cheddar-media.png", cat:"FRITAS"},
+      {id:"a1", name:"Fritas Individual 150g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1990, img:"./assets/novas-fotos/fritas-media.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a3", name:"Onion Ring Pequena 7 Unidades", desc:"7 Unidades de Onion Ring", price:1290, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a4", name:"Onion Ring Média 12 Unidades", desc:"12 Unidades de Onion Ring [Cebola Empanada]", price:1990, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a5", name:"Batata Cheddar e Bacon Pequena de 150g ", desc:"Porção Pequena de batata cheddar e bacon", price:1590, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a6", name:"Batata Cheddar e Bacon Média de 300g ", desc:"Porção média de batata cheddar e bacon", price:2990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
       // {id:"a7", name:"Fritas Média com Cheddar e Bacon 300g", desc:"Porção média", price:2990, img:"./assets/fotos/fritas-cheddar.png", cat:"FRITAS"},
 
       {id:"e1", name:"Leite em pó e leite condensado", desc:"Tamanho de 300ml", price:1480, img:"./assets/fotos/acai.png", cat:"AÇAI 300ML"},
@@ -390,6 +462,7 @@
       let html = ``;
       for(const cat of categories){
         const list = PRODUCTS.filter(p=>p.cat===cat).map(cardHTML).join('');
+        // Garantimos que o ID seja gerado pelo slug da categoria
         html += `<section class="section" id="cat-${slug(cat)}"><h2>${cat}</h2><div class="grid">${list}</div></section>`
       }
       content.innerHTML = html;
@@ -419,7 +492,6 @@
           <p class="desc">${p.desc}</p>
           <div class="priceRow">
             <span class="price">${priceForCard(p)}</span>
-            <button class="btn btn-primary" data-add="${p.id}">Adicionar</button>
           </div>
         </div>
       </article>`;
