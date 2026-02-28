@@ -305,18 +305,18 @@
     // - Se não tiver variants: usa product.price normalmente
     const PRODUCTS = [
       // Burgers COM variantes (exemplos prontos para editar):
-      { id:"h1", name:"Jimmy Clássico 2.0", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-2.png", cat:"MAIS PEDIDOS",price:2490
+      { id:"h1", name:"Jimmy Clássico 2.0", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-2.png", cat:"MAIS PEDIDOS", featured: true, price:2490
       },
-      { id:"h2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-salad.png", cat:"MAIS PEDIDOS", price:2890
+      { id:"h2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-salad.png", cat:"MAIS PEDIDOS", featured: true, price:2890
       },
 
-      { id:"u3", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"MAIS PEDIDOS", price:3590
+      { id:"u3", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"MAIS PEDIDOS", featured: true, price:3590
       },
       // { id:"h3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa caramelizada e maionese da casa", img:"./assets/novas-fotos/jimmy-duplo-bacon.png", cat:"MAIS PEDIDOS", 
       //   // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
       //   //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 120g", price:3390} ] }]
       // price: 2790},
-      { id:"h4", name:"Combo Casal 2.0", desc:"Pão Brioche, 2 Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"MAIS PEDIDOS", ignoreExtras: true, price:6490
+      { id:"h4", name:"Combo Casal 2.0", desc:"Pão Brioche, 2 Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL", featured: true, price:6490
       },
       { id:"y1", name:"Jimmy Burguer", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-burger.png", cat:"CLÁSSICOS (Burger alto 150g)",price:2290
       },
@@ -358,10 +358,10 @@
       {id:"c6", name:"Combo Bacon Salad", desc:"1 bacon salad + fritas + refri", price:3990, img:"./assets/novas-fotos/combo-bacon-salad.png", cat:"COMBOS INDIVIDUAIS"},
       {id:"c8", name:"Combo Casal 2.0", desc:"2 Clássicos 2.0 + fritas + Guaraná 1L", price:6490, img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL"},
       {id:"c7", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"COMBO CASAL"},
-      {id:"c20", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", ignoreExtras: true, cat:"MAIS PEDIDOS"},
-      {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + fritas + Guaraná 1L", price:4990, img:"./assets/novas-fotos/combo-casal-smash.png", cat:"COMBO CASAL"},
+      {id:"c20", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png",  cat:"COMBO CASAL", featured: true},
+      {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + Guaraná 1L", price:4870, img:"./assets/novas-fotos/combo-casal-smash-sem-batata.png", cat:"COMBO CASAL"},
       {id:"c9", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA"},
-      {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", ignoreExtras: true, cat:"MAIS PEDIDOS"},
+      {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA", featured: true},
       {id:"c10", name:"Combo Família Bacon", desc:"4 Bacon Salad + Guaraná 1L", price:11890, img:"./assets/novas-fotos/combo-familia-bacon.png", cat:"COMBO FAMILIA"},
       {id:"c5", name:"Combo Família Smash", desc:"4 Clássicos Smash + Guaraná 1L", price:7990, img:"./assets/novas-fotos/combo-familia-smash.png", cat:"COMBO FAMILIA"},
 
@@ -370,8 +370,8 @@
       {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1990, img:"./assets/novas-fotos/fritas-media.png", cat:"ACOMPANHAMENTOS"},
       {id:"a3", name:"Onion Ring Pequena 7 Unidades", desc:"7 Unidades de Onion Ring", price:1290, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"ACOMPANHAMENTOS"},
       {id:"a4", name:"Onion Ring Média 12 Unidades", desc:"12 Unidades de Onion Ring [Cebola Empanada]", price:1990, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a5", name:"Batata Cheddar e Bacon Pequena de 150g ", desc:"Porção Pequena de batata cheddar e bacon", price:1590, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a6", name:"Batata Cheddar e Bacon Média de 300g ", desc:"Porção média de batata cheddar e bacon", price:2990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a5", name:"Batata Cheddar e Bacon Pequena de 150g ", desc:"Porção Pequena de batata cheddar e bacon", price:1490, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a6", name:"Batata Cheddar e Bacon Média de 300g ", desc:"Porção média de batata cheddar e bacon", price:2890, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
       // {id:"a7", name:"Fritas Média com Cheddar e Bacon 300g", desc:"Porção média", price:2990, img:"./assets/fotos/fritas-cheddar.png", cat:"FRITAS"},
 
       {id:"e1", name:"Leite em pó e leite condensado", desc:"Tamanho de 300ml", price:1480, img:"./assets/fotos/acai.png", cat:"AÇAI 300ML"},
@@ -402,17 +402,41 @@
       // { id:"hamb120",  name:"Hambúrguer extra 120g", price:990 },
       { id:"fritasrefri", name:"Combo (Fritas + Refri Lata)",   price:1490 },
       { id:"salada", name:"Salada",      price:200 },
-      { id:"maionese", name:"Ovo",      price:200 },
+      { id:"ovo", name:"Ovo",      price:200 },
       { id:"maionese", name:"Maionese da Casa",      price:200 },
-      { id:"maionese", name:"Bacon Extra",      price:590 },
-      { id:"maionese", name:"Burger 80g",      price:690 },
-      { id:"maionese", name:"Burger 150g",      price:990 },
+      { id:"bacon", name:"Bacon Extra",      price:590 },
+      { id:"burguer80", name:"Burger 80g",      price:690 },
+      { id:"burguer150", name:"Burger 150g",      price:990 },
     ];
+
+    const DEFAULT_EXTRAS_COMBOS_INDIVIDUAIS = [
+      { id:"cheddarbacon", name:"Cheddar e Bacon nas Fritas",   price:890 },
+      { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
+      { id:"maionese", name:"Maionese da Casa",      price:200 },
+    ];
+
+    const DEFAULT_EXTRAS_COMBOS_CASAL = [
+      { id:"cheddarbacon", name:"Cheddar e Bacon nas Fritas",   price:890 },
+      { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
+      { id:"maionese", name:"Maionese da Casa",      price:200 },
+    ];
+
+    const DEFAULT_EXTRAS_COMBOS_FAMILIA = [
+      { id:"fritasmedia", name:"Fritas Média",   price:1990 },
+      { id:"cheddarmedia", name:"Fritas com Cheddar e Bacon Média",      price:2890 },
+      { id:"guarana1l", name:"Adicionar Guaraná 1L",      price:890 },
+      { id:"coca1l", name:"Adicionar Coca-Cola de 1L",      price:1090 },
+      { id:"maionese", name:"Maionese da Casa",      price:200 },
+    ];
+
+
     const EXTRAS_BY_CAT = {
       "CLÁSSICOS (Burger alto 150g)": DEFAULT_EXTRAS,
       "BURGER SMASH (Burger fino 80g a 100g)": DEFAULT_EXTRAS,
       "MAIS PEDIDOS": DEFAULT_EXTRAS,
-      "COMBOS INDIVIDUAIS": DEFAULT_EXTRAS,
+      "COMBOS INDIVIDUAIS": DEFAULT_EXTRAS_COMBOS_INDIVIDUAIS,
+      "COMBO CASAL": DEFAULT_EXTRAS_COMBOS_CASAL,
+      "COMBO FAMILIA": DEFAULT_EXTRAS_COMBOS_FAMILIA,
     };
     function getExtrasFor(product){ return EXTRAS_BY_CAT[product.cat] || []; }
 
@@ -459,15 +483,32 @@
     }
 
     function renderSections(){
-      let html = ``;
-      for(const cat of categories){
-        const list = PRODUCTS.filter(p=>p.cat===cat).map(cardHTML).join('');
-        // Garantimos que o ID seja gerado pelo slug da categoria
-        html += `<section class="section" id="cat-${slug(cat)}"><h2>${cat}</h2><div class="grid">${list}</div></section>`
+        let html = ``;
+
+        // --- SEÇÃO MAIS PEDIDOS (DINÂMICA) ---
+        const featuredList = PRODUCTS.filter(p => p.featured === true);
+        if(featuredList.length > 0) {
+          const cards = featuredList.map(cardHTML).join('');
+          // Usamos um ID fixo para manter o estilo de slide que você já tem no CSS
+          html += `
+            <section class="section" id="cat-mais-pedidos">
+              <h2>🔥 MAIS PEDIDOS</h2>
+              <div class="grid">${cards}</div>
+            </section>`;
+        }
+
+        // --- RESTANTE DAS CATEGORIAS ---
+        // Filtramos as categorias únicas, ignorando a antiga "MAIS PEDIDOS" se ainda existir no texto
+        const categories = Array.from(new Set(PRODUCTS.map(p => p.cat))).filter(c => c !== "MAIS PEDIDOS");
+
+        for(const cat of categories){
+          const list = PRODUCTS.filter(p => p.cat === cat).map(cardHTML).join('');
+          html += `<section class="section" id="cat-${slug(cat)}"><h2>${cat}</h2><div class="grid">${list}</div></section>`
+        }
+
+        content.innerHTML = html;
+        content.addEventListener('click', onCardClick);
       }
-      content.innerHTML = html;
-      content.addEventListener('click', onCardClick);
-    }
 
     function priceForCard(p){
       // se tiver variantes, mostra o menor preço como "a partir de"
