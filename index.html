@@ -359,8 +359,15 @@
       {id:"c8", name:"Combo Casal 2.0", desc:"2 Clássicos 2.0 + fritas + Guaraná 1L", price:6490, img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL"},
       {id:"c7", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"COMBO CASAL"},
       {id:"c20", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png",  cat:"COMBO CASAL", featured: true},
-      {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + Guaraná 1L", price:4870, img:"./assets/novas-fotos/combo-casal-smash-sem-batata.png", cat:"COMBO CASAL"},
-      {id:"c9", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA"},
+      {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + Guaraná 1L", price:4870, img:"./assets/novas-fotos/combo-casal-smash-sem-batata.png", cat:"COMBO CASAL",
+        customExtras: [
+           {id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L",   price:790 },
+           { id:"cheddarbacon", name:"Adicionar Fritas Pequena",   price:990 },
+          { id:"cheddarbaconfritas", name:"Adicionar Fritas Cheddar e Bacon Pequena",   price:1590 },
+          { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
+          { id:"maionese", name:"Maionese da Casa",      price:200 },
+        ]
+      },
       {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA", featured: true},
       {id:"c10", name:"Combo Família Bacon", desc:"4 Bacon Salad + Guaraná 1L", price:11890, img:"./assets/novas-fotos/combo-familia-bacon.png", cat:"COMBO FAMILIA"},
       {id:"c5", name:"Combo Família Smash", desc:"4 Clássicos Smash + Guaraná 1L", price:7990, img:"./assets/novas-fotos/combo-familia-smash.png", cat:"COMBO FAMILIA"},
@@ -368,10 +375,10 @@
       // Petiscos
       {id:"a1", name:"Fritas Individual 150g", desc:"Porção individual", price:990, img:"./assets/fotos/fritas.png", cat:"ACOMPANHAMENTOS"},
       {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1990, img:"./assets/novas-fotos/fritas-media.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a3", name:"Onion Ring Pequena 7 Unidades", desc:"7 Unidades de Onion Ring", price:1290, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a4", name:"Onion Ring Média 12 Unidades", desc:"12 Unidades de Onion Ring [Cebola Empanada]", price:1990, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a5", name:"Batata Cheddar e Bacon Pequena de 150g ", desc:"Porção Pequena de batata cheddar e bacon", price:1490, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a6", name:"Batata Cheddar e Bacon Média de 300g ", desc:"Porção média de batata cheddar e bacon", price:2890, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a3", name:"Onion Ring Individual", desc:"7 Unidades de Onion Ring", price:1290, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a4", name:"Onion Ring Média", desc:"12 Unidades de Onion Ring [Cebola Empanada]", price:1990, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a5", name:"Fritas Cheddar e Bacon Individual", desc:"Porção individual de 150g", price:1490, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a6", name:"Fritas Cheddar e Bacon Média", desc:"Porção média de 300g", price:2890, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
       // {id:"a7", name:"Fritas Média com Cheddar e Bacon 300g", desc:"Porção média", price:2990, img:"./assets/fotos/fritas-cheddar.png", cat:"FRITAS"},
 
       {id:"e1", name:"Leite em pó e leite condensado", desc:"Tamanho de 300ml", price:1480, img:"./assets/fotos/acai.png", cat:"AÇAI 300ML"},
@@ -385,7 +392,8 @@
       // {id:"d7", name:"Coca 200ml", desc:"200ml", price:400, img:"./assets/fotos/coca_200.png", cat:"BEBIDAS"},
       // {id:"d8", name:"Guaraná 200ml", desc:"200ml", price:400, img:"./assets/fotos/guarana_200.png", cat:"BEBIDAS"},
       {id:"d4", name:"Coca-Cola Zero Lata", desc:"350ml", price:680, img:"./assets/fotos/zero.png", cat:"BEBIDAS"},
-      {id:"d5", name:"Coca-Cola 600ml", desc:"Garrafa 600ml", price:890, img:"./assets/fotos/coca-600ml.png", cat:"BEBIDAS"},
+      {id:"d5", name:"Coca-Cola 600ml", desc:"Garrafa 600ml", price:990, img:"./assets/fotos/coca-600ml.png", cat:"BEBIDAS"},
+      {id:"d7", name:"Coca-Cola 1L", desc:"Garrafa 1L", price:1290, img:"./assets/novas-fotos/coca-1l.png", cat:"BEBIDAS"},
       {id:"d6", name:"Guaraná 1L", desc:"Garrafa 1L", price:890, img:"./assets/fotos/guarana_1l.png", cat:"BEBIDAS"},
       // {id:"d9", name:"Suco de Uva Integral", desc:"300ml", price:790, img:"./assets/fotos/suco.png", cat:"BEBIDAS"},
       {id:"d3", name:"Água Mineral", desc:"Com ou sem gás", price:400, img:"./assets/fotos/agua.png", cat:"BEBIDAS"}
@@ -416,16 +424,18 @@
     ];
 
     const DEFAULT_EXTRAS_COMBOS_CASAL = [
-      { id:"cheddarbacon", name:"Cheddar e Bacon nas Fritas",   price:890 },
+      { id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L",   price:790 },
+      { id:"cheddarbacon", name:"Adicionar Cheddar e Bacon nas Fritas",   price:890 },
       { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
       { id:"maionese", name:"Maionese da Casa",      price:200 },
     ];
 
     const DEFAULT_EXTRAS_COMBOS_FAMILIA = [
+      { id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L",   price:790 },
       { id:"fritasmedia", name:"Fritas Média",   price:1990 },
       { id:"cheddarmedia", name:"Fritas com Cheddar e Bacon Média",      price:2890 },
       { id:"guarana1l", name:"Adicionar Guaraná 1L",      price:890 },
-      { id:"coca1l", name:"Adicionar Coca-Cola de 1L",      price:1090 },
+      { id:"coca1l", name:"Adicionar Coca-Cola de 1L",      price:1290 },
       { id:"maionese", name:"Maionese da Casa",      price:200 },
     ];
 
@@ -438,7 +448,15 @@
       "COMBO CASAL": DEFAULT_EXTRAS_COMBOS_CASAL,
       "COMBO FAMILIA": DEFAULT_EXTRAS_COMBOS_FAMILIA,
     };
-    function getExtrasFor(product){ return EXTRAS_BY_CAT[product.cat] || []; }
+    function getExtrasFor(product) {
+      // 1. Se o produto tiver extras próprios, usa eles
+      if (product.customExtras && product.customExtras.length > 0) {
+        return product.customExtras;
+      }
+      
+      // 2. Se não, busca o padrão da categoria (sua lógica atual)
+      return EXTRAS_BY_CAT[product.cat] || [];
+    }
 
     // —— VARIANTES ——
     function hasVariants(p){ return Array.isArray(p.variants) && p.variants.length > 0; }
