@@ -158,6 +158,10 @@
     .bagBtn{ position:fixed; right: 20px; bottom:64px; z-index:1; display:none; padding:14px 18px; background:#ff0012; color:white; border:none; font-size:14px; border-radius:999px; font-weight:700; box-shadow:var(--shadow); cursor:pointer; font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial; }
 
     /* Estilo para o Slide de Mais Pedidos */
+#cat-mais-pedidos {
+  position: relative;
+}
+
     #cat-mais-pedidos .grid {
       display: flex; /* Muda de grid para flex para alinhar lado a lado */
       flex-wrap: nowrap; /* Impede que os itens pulem para a linha de baixo */
@@ -173,6 +177,11 @@
 
     #cat-mais-pedidos .grid::-webkit-scrollbar {
       display: none; /* Esconde a barra de rolagem para ficar limpo como no AnotaAI */
+    }
+
+    #cat-mais-pedidos .grid > div {
+      scroll-snap-align: start;
+      scroll-snap-stop: always; /* Força o scroll a parar no próximo item, evitando que ignore o comando */
     }
 
     #cat-mais-pedidos .card {
@@ -214,6 +223,32 @@
     #cat-mais-pedidos .btn.btn-primary {
       display:  none;
     }
+
+    .scrollarrow {
+      position: absolute;
+      top: 8px;
+      right: 34px;
+      z-index: 100;
+    }
+
+    .scrollarrow {
+      width: 24px;
+      height: 24px;
+      fill: var(--muted);
+    }
+
+    .scrollarrow .scrollbtn.left {
+      display: none;
+      background: black;
+
+    } 
+
+    .scrollarrow .scrollbtn.right {
+      background: none;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    } 
 
 
   </style>
@@ -310,14 +345,11 @@
       { id:"h2", name:"Jimmy Bacon Salad", desc:"Pão Brioche, Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-bacon-salad.png", cat:"MAIS PEDIDOS", featured: true, price:2890
       },
 
-      { id:"u3", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"MAIS PEDIDOS", featured: true, price:3590
-      },
+      
       // { id:"h3", name:"Jimmy Duplo Bacon", desc:"Pão Brioche, 2x burger 80g, cheddar, Bacon artesanal, cebola roxa caramelizada e maionese da casa", img:"./assets/novas-fotos/jimmy-duplo-bacon.png", cat:"MAIS PEDIDOS", 
       //   // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
       //   //   options:[ {id:"2x80", label:"2x 80g", price:2790}, {id:"2x120", label:"2x 120g", price:3390} ] }]
       // price: 2790},
-      { id:"h4", name:"Combo Casal 2.0", desc:"Pão Brioche, 2 Burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL", featured: true, price:6490
-      },
       { id:"y1", name:"Jimmy Burguer", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-burger.png", cat:"CLÁSSICOS (Burger alto 150g)",price:2290
       },
       { id:"f1", name:"Jimmy Clássico 2.0", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-2.png", cat:"CLÁSSICOS (Burger alto 150g)",price:2490
@@ -327,11 +359,12 @@
       { id:"f3", name:"Jimmy Bacon Onion", desc:"Pão Brioche, Burger 150g, Bacon, Onion Ring (Cebola Crocante), cheddar, alface, tomate e maionese da casa.", img:"./assets/novas-fotos/jimmy-onion.png", cat:"CLÁSSICOS (Burger alto 150g)", price:3290
       },
       { id:"b5", name:"Jimmy Catupiry", desc:"Pão Brioche, burger 150g, Catupiry empanado, bacon, cheddar, alface, tomate, mel e maionese da casa", img:"./assets/novas-fotos/jimmy-catupiry.png", cat:"CLÁSSICOS (Burger alto 150g)",
+      price: 3590},
+      { id:"u3", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"CLÁSSICOS (Burger alto 150g)", price:3590
+      },
+      
         // variants:[{ id:"carne", title:"Quantidade de hambúrguer", type:"single", required:true,
         //   options:[ {id:"1x120", label:"1x 150g", price:3590}, {id:"1x180", label:"2x 150g", price:4490} ] }]
-      price: 3590},
-      { id:"u1", name:"Jimmy McGrill", desc:"Pão brioche, 2 Burgers 150g, bacon defumado cebola caramelizada, picles, queijo cheddar e maionese da casa.", img:"./assets/novas-fotos/jimmy-mcgrill.png", cat:"CLÁSSICOS (Burger alto 150g)", price:3590
-      },
 
       
       { id:"b1", name:"Clássico Smash", desc:"Pão  brioche,  Burger  100g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-smash.png", cat:"BURGER SMASH (Burger fino 80g a 100g)",price:1990
@@ -353,22 +386,30 @@
       // options:[ {id:"3x90", label:"3x 80g", price:3490}, {id:"3x120", label:"3x 150g", price:3990} ] }]
       price: 3490},
       { id:"b4", name:"Jimmy Duplo Catupiry", desc:"Pão Brioche, 2x burger 80g, Catupiry Empanado, bacon, alface, tomate e maionese da casa", img:"./assets/novas-fotos/duplo-catupiry.png", cat:"BURGER SMASH (Burger fino 80g a 100g)", price: 3790},
+
+            {id:"a5", name:"Fritas Cheddar e Bacon ", desc:"Porção de 200g", price:1990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS CHEDDAR E BACON"},
+      {id:"a6", name:"Fritas Cheddar e Bacon Grande", desc:"Porção de 400g", price:3490, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS CHEDDAR E BACON"},
+
       {id:"c1", name:"Combo Clássico 2.0", desc:"1 Jimmy Clássico 2.0 + Fritas + Refri", price:3690, img:"./assets/novas-fotos/combo-classico-2.png", cat:"COMBOS INDIVIDUAIS"},
       {id:"c2", name:"Combo Duplo Bacon", desc:"1 duplo bacon + fritas + refri", price:3990, img:"./assets/novas-fotos/combo-duplo-bacon.png", cat:"COMBOS INDIVIDUAIS"},
       {id:"c6", name:"Combo Bacon Salad", desc:"1 bacon salad + fritas + refri", price:3990, img:"./assets/novas-fotos/combo-bacon-salad.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c8", name:"Combo Casal 2.0", desc:"2 Clássicos 2.0 + fritas + Guaraná 1L", price:6490, img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL"},
-      {id:"c7", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"COMBO CASAL"},
+      {id:"c8", name:"Combo Casal 2.0", desc:"2 Clássicos 2.0 + fritas + Guaraná 1L", price:6490, img:"./assets/novas-fotos/combo-casal-classico-2.png", cat:"COMBO CASAL", featured: true},
+
       {id:"c20", name:"Combo Casal Bacon", desc:"2 Bacon Salad + fritas + Guaraná 1L", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png",  cat:"COMBO CASAL", featured: true},
-      {id:"c4", name:"Combo Casal Smash", desc:"2 Clássicos Smash + Guaraná 1L", price:4870, img:"./assets/novas-fotos/combo-casal-smash-sem-batata.png", cat:"COMBO CASAL",
+      {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA", featured: true},
+      {id:"c4", name:"Combo Casal Smash ", desc:"2 Clássicos Smash + Guaraná 1L", price:4870, img:"./assets/novas-fotos/combo-casal-smash-sem-batata.png", cat:"COMBO CASAL",
+      
         customExtras: [
            {id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L",   price:790 },
            { id:"cheddarbacon", name:"Adicionar Fritas Pequena",   price:990 },
           { id:"cheddarbaconfritas", name:"Adicionar Fritas Cheddar e Bacon Pequena",   price:1590 },
           { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
           { id:"maionese", name:"Maionese da Casa",      price:200 },
-        ]
+        ], featured: true,
       },
-      {id:"c21", name:"Combo Família 2.0", desc:"4 Jimmy Clássicos 2.0 + Guaraná 1L", price:9900, img:"./assets/novas-fotos/combo-familia-classico-2.png", cat:"COMBO FAMILIA", featured: true},
+
+      {id:"c5", name:"Combo Casal Smash + Fritas", desc:"2 Clássicos Smash + Fritas  + Guaraná 1L", price:5990, img:"./assets/novas-fotos/combo-casal-smash.png", cat:"COMBO CASAL" },
+      
       {id:"c10", name:"Combo Família Bacon", desc:"4 Bacon Salad + Guaraná 1L", price:11890, img:"./assets/novas-fotos/combo-familia-bacon.png", cat:"COMBO FAMILIA"},
       {id:"c5", name:"Combo Família Smash", desc:"4 Clássicos Smash + Guaraná 1L", price:7990, img:"./assets/novas-fotos/combo-familia-smash.png", cat:"COMBO FAMILIA"},
 
@@ -377,8 +418,7 @@
       {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1990, img:"./assets/novas-fotos/fritas-media.png", cat:"ACOMPANHAMENTOS"},
       {id:"a3", name:"Onion Ring Individual", desc:"7 Unidades de Onion Ring", price:1290, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"ACOMPANHAMENTOS"},
       {id:"a4", name:"Onion Ring Média", desc:"12 Unidades de Onion Ring [Cebola Empanada]", price:1990, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a5", name:"Fritas Cheddar e Bacon Individual", desc:"Porção individual de 150g", price:1490, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
-      {id:"a6", name:"Fritas Cheddar e Bacon Média", desc:"Porção média de 300g", price:2890, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"ACOMPANHAMENTOS"},
+
       // {id:"a7", name:"Fritas Média com Cheddar e Bacon 300g", desc:"Porção média", price:2990, img:"./assets/fotos/fritas-cheddar.png", cat:"FRITAS"},
 
       {id:"e1", name:"Leite em pó e leite condensado", desc:"Tamanho de 300ml", price:1480, img:"./assets/fotos/acai.png", cat:"AÇAI 300ML"},
@@ -510,7 +550,23 @@
           // Usamos um ID fixo para manter o estilo de slide que você já tem no CSS
           html += `
             <section class="section" id="cat-mais-pedidos">
-              <h2>🔥 MAIS PEDIDOS</h2>
+              <div> 
+                <h2>🔥 MAIS PEDIDOS</h2>
+                <div class="scrollarrow">
+                  <button class="scrollbtn left" data-scroll="-320" aria-label="Scroll left">&lt;</button>
+                  <button class="scrollbtn right" data-scroll="320" aria-label="Scroll right"><svg width="41" height="20" viewBox="0 0 41 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3798_7)">
+<path d="M31.0007 4.16651L36.834 9.99984M36.834 9.99984L31.0007 15.8332M36.834 9.99984L6.5 9.99984" stroke="black" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_3798_7">
+<rect width="20" height="41" fill="white" transform="translate(41 1.79217e-06) rotate(90)"/>
+</clipPath>
+</defs>
+</svg>
+
+</button>
+              </div> 
               <div class="grid">${cards}</div>
             </section>`;
         }
@@ -528,6 +584,63 @@
         content.addEventListener('click', onCardClick);
       }
 
+    function scrollSection(e) {
+      const btn = e.target.closest('.scrollbtn');
+      if (!btn) return;
+
+      const grid = btn.closest('.section').querySelector('#cat-mais-pedidos .grid');
+      if (!grid) return;
+
+      // Descobre a direção (1 para direita, -1 para esquerda)
+      const direction = btn.classList.contains('right') ? 1 : -1;
+      
+      // Pega a largura de um item (incluindo o gap)
+      const itemWidth = grid.firstElementChild.offsetWidth + 16; // 16 é um exemplo de gap
+
+      grid.scrollBy({ 
+        left: itemWidth * direction, 
+        behavior: 'smooth' 
+      });
+    }
+
+
+    document.getElementById('content').addEventListener('click', (e) => {
+  
+      // 1. Lógica para os botões de scroll
+      const scrollBtn = e.target.closest('.scrollbtn');
+      if (scrollBtn) {
+        const grid = scrollBtn.closest('.section').querySelector('#cat-mais-pedidos .grid');
+        if (!grid) return;
+
+        const direction = scrollBtn.classList.contains('right') ? 1 : -1;
+        
+        // Como você definiu no CSS que o card tem 160px e o gap do grid é 4px:
+        const itemWidth = 160 + 4; 
+
+        grid.scrollBy({ 
+          left: itemWidth * direction, 
+          behavior: 'smooth' 
+        });
+        return; // Para a execução aqui se foi um clique no botão de scroll
+      }
+
+      // 2. Mantém a sua lógica existente para abrir o Modal quando clica no Card
+      const addBtn = e.target.closest('[data-add]');
+      const card = e.target.closest('.card');
+      if (!addBtn && !card) return;
+      
+      const id = addBtn ? addBtn.getAttribute('data-add') : (card && card.getAttribute('data-id'));
+      if (id) {
+        openProductModal(id);
+      }
+    });
+
+    document.querySelectorAll('.scrollbtn').forEach(btn => {
+      btn.addEventListener('click', scrollSection);
+    });
+    // Init
+    renderNav();
+    renderSections(); // Os botões só passam a existir AQUI!
     function priceForCard(p){
       // se tiver variantes, mostra o menor preço como "a partir de"
       if(hasVariants(p)){
