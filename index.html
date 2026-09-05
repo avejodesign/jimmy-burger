@@ -114,10 +114,10 @@
     /* Lista mobile com thumb à direita */
     .points{display:none; align-items:center; gap:6px; font-size:12px; color:var(--brand)}
     .points .gift{width:16px; height:16px; fill:var(--brand)}
-    .title{ font-size:14px; text-transform:uppercase; letter-spacing:.2px;}
+    .title{ font-size:14px; text-transform:uppercase; letter-spacing:.2px; overflow-wrap:anywhere;}
     @media (max-width:560px){
       .card{ flex-direction:row-reverse; align-items:center }
-      .desc{ font-size:11px; text-transform:uppercase; color:var(--muted); line-height:1.25; display: -webkit-box; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical; overflow: hidden;}
+      .desc{ font-size:11px; text-transform:uppercase; color:var(--muted); line-height:1.25; }
       .thumb{ width:100px; height:100px; aspect-ratio:1/1; border-radius:12px; margin-right: 6px; object-fit:cover }
 
       #cat-mais-pedidos .card {
@@ -198,12 +198,10 @@
 
     #cat-mais-pedidos .title {
       font-size: 11px;
+      line-height: 1.25;
       white-space: normal;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      height: 30px;
+      overflow-wrap: anywhere;
+      height: auto;
     }
 
     #cat-mais-pedidos .price {
@@ -350,6 +348,8 @@
       // options:[ {id:"3x90", label:"3x 80g", price:3490}, {id:"3x120", label:"3x 150g", price:3990} ] }]
       price: 3490},
 
+      { id:"ch1", name:"Jimmy Chicken (Frango)", desc:"Pão brioche, Burger de Frango empanado 90g, queijo cheddar, alface, tomate, picles, ketchup e maionese da casa.", img:"./assets/novas-fotos/jimmy-chicken.png", cat:"FRANGO", price:2490 },
+
             {id:"a5", name:"Fritas Cheddar e Bacon ", desc:"Porção de 200g", price:1990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS CHEDDAR E BACON"},
       {id:"a6", name:"Fritas Cheddar e Bacon Grande", desc:"Porção de 400g", price:2990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS CHEDDAR E BACON"},
 
@@ -362,6 +362,16 @@
       {id:"c7", name:"Combo Jimmy Triplo", desc:"<b>1 Jimmy Triplo Bacon + Fritas + Refri lata</b>", price:4790, img:"./assets/novas-fotos/combo-triplo-bacon.png", cat:"COMBOS INDIVIDUAIS"},
       {id:"c8", name:"Combo Jimmy Catupiry", desc:"<b>1 Jimmy Catupiry Bacon + Fritas + Refri lata</b>", price:4990, img:"./assets/novas-fotos/combo-jimmy-catupiry.png", cat:"COMBOS INDIVIDUAIS"},
       {id:"c9", name:"Combo Jimmy McGrill", desc:"<b>1 Jimmy McGrill + Fritas + Refri lata</b>", price:4990, img:"./assets/novas-fotos/combo-jimmy-mcgrill.png", cat:"COMBOS INDIVIDUAIS"},
+      {id:"c10", name:"Combo Jimmy Chicken", desc:"<b>Jimmy Chicken + Fritas + Suco Del Valle ou Refri lata</b>", img:"./assets/novas-fotos/combo-jimmy-chicken.png", cat:"COMBOS INDIVIDUAIS",
+        variants:[{ id:"bebida", title:"Escolha a bebida", type:"single", required:true,
+          options:[
+            {id:"sucouva", label:"Suco Del Valle Uva 290ml", price:3990},
+            {id:"sucomaracuja", label:"Suco Del Valle Maracujá 290ml", price:3990},
+            {id:"coca", label:"Coca-Cola Lata", price:3990},
+            {id:"cocazero", label:"Coca-Cola Zero Lata", price:3990},
+            {id:"guarana", label:"Guaraná Lata", price:3990},
+            {id:"guaranazero", label:"Guaraná Zero Lata", price:3990}
+          ]}]},
 
       {id:"c100", name:"COMBO DUPLA PERFEITA", desc:"<b>2 Bacon Salad Smash + Fritas + nuggets (7un) + Guaraná 1L</b>", price:7990, img:"./assets/novas-fotos/combo-duplo-perfeito.png", cat:"COMBO CASAL", subcat:"Burgers de 100g"},
       {id:"c101", name:"COMBO DUPLA PERFEITA 2.0", desc:"<b>2 Bacon Salad 2.0 + Fritas + nuggets (7un) + Coca Cola 1L</b>", price:8990, img:"./assets/novas-fotos/combo-duplo-perfeito-2-0.png", cat:"COMBO CASAL", subcat:"Burgers de 150g"},
@@ -370,19 +380,12 @@
       {id:"c22", name:"Combo Casal Bacon 2.0", desc:"<b>2 Jimmy Bacon Salad 2.0 + Fritas + Guaraná 1L</b><br><br><b>Jimmy Bacon Salad 2.0:</b><br>Pão brioche, burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", price:7490, img:"./assets/novas-fotos/combo-casal-bacon-salad.png", cat:"COMBO CASAL", subcat:"Burgers de 150g"},
       {id:"c31", name:"Combo Casal Smash", desc:"<b>2 Clássicos Smash + Guaraná 1L</b><br><br><b>Clássico Smash:</b><br>Pão brioche, burger 100g, cheddar, alface, tomate, picles e maionese da casa.", price:4970, img:"./assets/novas-fotos/combo-casal-smash-sem-batata.png", cat:"COMBO CASAL", subcat:"Burgers de 100g", featured: true,
         customExtras: [
-          { id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L", price:790 },
+          { id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L", price:490 },
           { id:"cheddarbacon", name:"Adicionar Fritas Pequena", price:990 },
           { id:"cheddarbaconfritas", name:"Adicionar Fritas Cheddar e Bacon Pequena", price:1590 },
           { id:"onionrings", name:"Onion Rings pequena 7 unidades", price:1290 },
           { id:"maionese", name:"Maionese da Casa", price:200 },
         ]},
-      {id:"c33", name:"Combo Casal Smash Fritas", desc:"<b>2 Clássicos Smash + Fritas</b><br><br><b>Bacon Salad Smash:</b><br>Pão brioche, burger 100g, bacon, cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", price:4970, img:"./assets/novas-fotos/combo-casal-smash-fritas.jpeg", cat:"COMBO CASAL", subcat:"Burgers de 100g", featured: true,
-        customExtras: [
-          { id:"cheddarbacon", name:"Adicionar Fritas Pequena", price:990 },
-          { id:"cheddarbaconfritas", name:"Adicionar Fritas Cheddar e Bacon Pequena", price:1590 },
-          { id:"onionrings", name:"Onion Rings pequena 7 unidades", price:1290 },
-          { id:"maionese", name:"Maionese da Casa", price:200 },
-      ]},
       {id:"c32", name:"Combo Casal Bacon Smash", desc:"<b>2 Bacon Salad Smash + Guaraná 1L</b><br><br><b>Bacon Salad Smash:</b><br>Pão brioche, burger 100g, bacon, cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", price:5790, img:"./assets/novas-fotos/combo-casal-smash-bacon.jpeg", cat:"COMBO CASAL", subcat:"Burgers de 100g", featured: true},
 
       {id:"c40", name:"Combo Três Mosqueteiros 2.0", desc:"<b>3 Jimmy Bacon Salad 2.0 + Coca-Cola 1L</b><br><br><b>Jimmy Bacon Salad 2.0:</b><br>Pão brioche, burger 150g, bacon, cheddar, alface, tomate, cebola roxa caramelizada e maionese da casa.", price:9790, img:"./assets/novas-fotos/combo-tres-mosqueteiros-2.png", cat:"COMBO FAMILIA", subcat:"Burgers de 150g", featured: true},
@@ -399,6 +402,8 @@
       {id:"a2", name:"Fritas Média 300g", desc:"Porção média", price:1990, img:"./assets/novas-fotos/fritas-media.png", cat:"ACOMPANHAMENTOS"},
       {id:"a3", name:"Onion Ring Individual", desc:"7 Unidades de Onion Ring", price:1290, img:"./assets/novas-fotos/onion-ring-pequeno.png", cat:"ACOMPANHAMENTOS"},
       {id:"a4", name:"Onion Ring Média", desc:"12 Unidades de Onion Ring [Cebola Empanada]", price:1990, img:"./assets/novas-fotos/onion-ring-medio.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a8", name:"Nuggets Supreme 7 Unidades", desc:"7 unidades", price:1490, img:"./assets/novas-fotos/nuggets-supreme-7.png", cat:"ACOMPANHAMENTOS"},
+      {id:"a9", name:"Nuggets Supreme 12 Unidades", desc:"12 unidades", price:2290, img:"./assets/novas-fotos/nuggets-supreme-12.png", cat:"ACOMPANHAMENTOS"},
 
       // {id:"a7", name:"Fritas Média com Cheddar e Bacon 300g", desc:"Porção média", price:2990, img:"./assets/fotos/fritas-cheddar.png", cat:"FRITAS"},
 
@@ -413,7 +418,9 @@
       {id:"d7", name:"Coca-Cola 1L", desc:"Garrafa 1L", price:1190, img:"./assets/novas-fotos/coca-1l.png", cat:"BEBIDAS"},
       {id:"d6", name:"Guaraná 1L", desc:"Garrafa 1L", price:990, img:"./assets/fotos/guarana_1l.png", cat:"BEBIDAS"},
       // {id:"d9", name:"Suco de Uva Integral", desc:"300ml", price:790, img:"./assets/fotos/suco.png", cat:"BEBIDAS"},
-      {id:"d3", name:"Água Mineral", desc:"Com ou sem gás", price:400, img:"./assets/fotos/agua.png", cat:"BEBIDAS"}
+      {id:"d3", name:"Água Mineral", desc:"Com ou sem gás", price:400, img:"./assets/fotos/agua.png", cat:"BEBIDAS"},
+      {id:"d11", name:"Suco Del Valle Uva 290ml", desc:"Lata 290ml", price:680, img:"./assets/novas-fotos/suco-del-valle-uva.png", cat:"BEBIDAS"},
+      {id:"d12", name:"Suco Del Valle Maracujá 290ml", desc:"Lata 290ml", price:680, img:"./assets/novas-fotos/suco-del-valle-maracuja.png", cat:"BEBIDAS"}
     ];
 
     // ——————————— HELPERS ———————————
@@ -438,6 +445,20 @@
       { id:"ovo", name:"Ovo",      price: 200 },
     ];
 
+    const DEFAULT_EXTRAS_FRANGO = [
+      { id:"fritasrefri", name:"Combo (Fritas + Refri Lata)",   price:1490 },
+      { id:"fritasbaconcheddar", name:"Fritas Cheddar e Bacon",   price:1990 },
+      { id:"refrilatacoca", name:"Coca Lata 350ml",   price:680 },
+      { id:"refrilataguarana", name:"Guaraná Lata 350ml",   price:680 },
+      { id:"refrilatacocazero", name:"Coca Zero Lata 350ml",   price:680 },
+      { id:"refrilataguaranazero", name:"Guaraná Zero Lata 350ml",   price:680 },
+      { id:"sucouva", name:"Suco Del Valle Uva 290ml",   price:680 },
+      { id:"sucomaracuja", name:"Suco Del Valle Maracujá 290ml",   price:680 },
+      { id:"maionese", name:"Maionese da Casa",      price:200 },
+      { id:"bacon", name:"Bacon Extra",      price:590 },
+      { id:"salada", name:"Salada",      price: 200 },
+    ];
+
     const DEFAULT_EXTRAS_COMBOS_INDIVIDUAIS = [
       { id:"cheddarbacon", name:"Cheddar e Bacon nas Fritas",   price:890 },
       { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
@@ -445,7 +466,7 @@
     ];
 
     const DEFAULT_EXTRAS_COMBOS_CASAL = [
-      { id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L",   price:790 },
+      { id:"cocachange", name:"Trocar Guaraná por Coca-Cola 1L",   price:490 },
       { id:"cheddarbacon", name:"Adicionar Cheddar e Bacon nas Fritas",   price:890 },
       { id:"onionrings", name:"Onion Rings pequena 7 unidades",      price:1290 },
       { id:"maionese", name:"Maionese da Casa",      price:200 },
@@ -464,6 +485,7 @@
       "CLÁSSICOS (Burger alto 150g)": DEFAULT_EXTRAS,
       "BURGER SMASH (Burger fino 80g a 100g)": DEFAULT_EXTRAS,
       "MAIS PEDIDOS": DEFAULT_EXTRAS,
+      "FRANGO": DEFAULT_EXTRAS_FRANGO,
       "COMBOS INDIVIDUAIS": DEFAULT_EXTRAS_COMBOS_INDIVIDUAIS,
       "COMBO CASAL": DEFAULT_EXTRAS_COMBOS_CASAL,
       "COMBO FAMILIA": DEFAULT_EXTRAS_COMBOS_FAMILIA,
@@ -505,6 +527,7 @@
     const CATEGORY_ORDER = [
       "CLÁSSICOS (Burger alto 150g)",
       "BURGER SMASH (Burger fino 80g a 100g)",
+      "FRANGO",
       "COMBO CASAL",
       "COMBO FAMILIA",
       "COMBOS INDIVIDUAIS",
@@ -828,7 +851,7 @@
           ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<div class="thumb thumb-empty" style="width:84px;height:84px;border-radius:12px;border:1px solid var(--border)"></div>`}
           <div>
             <h3>${p.name}</h3>
-            <p class="desc" style="margin:4px 0 6px;-webkit-line-clamp: 5 !important;">${p.desc}</p>
+            <p class="desc" style="margin:4px 0 6px; display:block; overflow:visible; -webkit-line-clamp:unset;">${p.desc}</p>
             <strong id="pmPrice">${fmtBRL(variantUnitPrice(p, CURRENT_MODAL.selectedVariants))}</strong>
           </div>
         </div>
