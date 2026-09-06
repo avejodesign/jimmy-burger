@@ -300,6 +300,17 @@
     // Regras:
     // - Se o produto tiver variants: cada option possui price ABSOLUTO do item unitário
     // - Se não tiver variants: usa product.price normalmente
+    const comboDrinkVariant = (price) => ({
+      id:"bebida", title:"Escolha a bebida", type:"single", required:true,
+      options:[
+        {id:"coca", label:"Coca-Cola Lata", price},
+        {id:"cocazero", label:"Coca-Cola Zero Lata", price},
+        {id:"guarana", label:"Guaraná Lata", price},
+        {id:"guaranazero", label:"Guaraná Zero Lata", price},
+        {id:"sucouva", label:"Suco Del Valle Uva 290ml", price},
+        {id:"sucomaracuja", label:"Suco Del Valle Maracujá 290ml", price},
+      ]
+    });
     const PRODUCTS = [
       // Burgers COM variantes (exemplos prontos para editar):
       // { id:"h1", name:"Jimmy Clássico 2.0", desc:"Pão  brioche,  Burger  150g,  queijo cheddar, alface, tomate, picles, cebola roxa caramelizada e maionese da casa.", img:"./assets/novas-fotos/jimmy-classico-2.png", cat:"MAIS PEDIDOS", featured: true, price:2490
@@ -353,25 +364,16 @@
             {id:"a5", name:"Fritas Cheddar e Bacon ", desc:"Porção de 200g", price:1990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS CHEDDAR E BACON"},
       {id:"a6", name:"Fritas Cheddar e Bacon Grande", desc:"Porção de 400g", price:2990, img:"./assets/novas-fotos/batata-cheddar-pequena.png", cat:"FRITAS CHEDDAR E BACON"},
 
-      {id:"c1", name:"Combo Clássico Smash", desc:"<b>1 Clássico Smash + Fritas + Refri lata</b>", price:3490, img:"./assets/novas-fotos/combo-smash.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c2", name:"Combo Jimmy Burger", desc:"<b>1 Jimmy Burger + Fritas + Refri lata</b>", price:3790, img:"./assets/novas-fotos/combo-jimmy-burger.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c3", name:"Combo Bacon Smash", desc:"<b>1 Bacon Salad Smash + Fritas + Refri lata</b>", price:3990, img:"./assets/novas-fotos/combo-bacon-smash.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c4", name:"Combo Duplo Bacon", desc:"<b>1 Duplo Bacon + Fritas + Refri lata</b>", price:4290, img:"./assets/novas-fotos/combo-duplo-bacon.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c5", name:"Combo Bacon Salad 2.0", desc:"<b>1 Jimmy Bacon Salad 2.0 + Fritas + Refri lata</b>", price:4290, img:"./assets/novas-fotos/combo-bacon-salad.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c6", name:"Combo Jimmy Onion", desc:"<b>1 Jimmy Bacon Onion + Fritas + Refri lata</b>", price:4590, img:"./assets/novas-fotos/combo-jimmy-onion.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c7", name:"Combo Jimmy Triplo", desc:"<b>1 Jimmy Triplo Bacon + Fritas + Refri lata</b>", price:4790, img:"./assets/novas-fotos/combo-triplo-bacon.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c8", name:"Combo Jimmy Catupiry", desc:"<b>1 Jimmy Catupiry Bacon + Fritas + Refri lata</b>", price:4990, img:"./assets/novas-fotos/combo-jimmy-catupiry.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c9", name:"Combo Jimmy McGrill", desc:"<b>1 Jimmy McGrill + Fritas + Refri lata</b>", price:4990, img:"./assets/novas-fotos/combo-jimmy-mcgrill.png", cat:"COMBOS INDIVIDUAIS"},
-      {id:"c10", name:"Combo Jimmy Chicken", desc:"<b>Jimmy Chicken + Fritas + Suco Del Valle ou Refri lata</b>", img:"./assets/novas-fotos/combo-jimmy-chicken.png", cat:"COMBOS INDIVIDUAIS",
-        variants:[{ id:"bebida", title:"Escolha a bebida", type:"single", required:true,
-          options:[
-            {id:"sucouva", label:"Suco Del Valle Uva 290ml", price:3990},
-            {id:"sucomaracuja", label:"Suco Del Valle Maracujá 290ml", price:3990},
-            {id:"coca", label:"Coca-Cola Lata", price:3990},
-            {id:"cocazero", label:"Coca-Cola Zero Lata", price:3990},
-            {id:"guarana", label:"Guaraná Lata", price:3990},
-            {id:"guaranazero", label:"Guaraná Zero Lata", price:3990}
-          ]}]},
+      {id:"c1", name:"Combo Clássico Smash", desc:"<b>1 Clássico Smash + Fritas + Suco Del Valle ou Refri lata</b>", price:3490, img:"./assets/novas-fotos/combo-smash.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(3490)]},
+      {id:"c2", name:"Combo Jimmy Burger", desc:"<b>1 Jimmy Burger + Fritas + Suco Del Valle ou Refri lata</b>", price:3790, img:"./assets/novas-fotos/combo-jimmy-burger.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(3790)]},
+      {id:"c3", name:"Combo Bacon Smash", desc:"<b>1 Bacon Salad Smash + Fritas + Suco Del Valle ou Refri lata</b>", price:3990, img:"./assets/novas-fotos/combo-bacon-smash.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(3990)]},
+      {id:"c4", name:"Combo Duplo Bacon", desc:"<b>1 Duplo Bacon + Fritas + Suco Del Valle ou Refri lata</b>", price:4290, img:"./assets/novas-fotos/combo-duplo-bacon.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(4290)]},
+      {id:"c5", name:"Combo Bacon Salad 2.0", desc:"<b>1 Jimmy Bacon Salad 2.0 + Fritas + Suco Del Valle ou Refri lata</b>", price:4290, img:"./assets/novas-fotos/combo-bacon-salad.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(4290)]},
+      {id:"c6", name:"Combo Jimmy Onion", desc:"<b>1 Jimmy Bacon Onion + Fritas + Suco Del Valle ou Refri lata</b>", price:4590, img:"./assets/novas-fotos/combo-jimmy-onion.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(4590)]},
+      {id:"c7", name:"Combo Jimmy Triplo", desc:"<b>1 Jimmy Triplo Bacon + Fritas + Suco Del Valle ou Refri lata</b>", price:4790, img:"./assets/novas-fotos/combo-triplo-bacon.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(4790)]},
+      {id:"c8", name:"Combo Jimmy Catupiry", desc:"<b>1 Jimmy Catupiry Bacon + Fritas + Suco Del Valle ou Refri lata</b>", price:4990, img:"./assets/novas-fotos/combo-jimmy-catupiry.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(4990)]},
+      {id:"c9", name:"Combo Jimmy McGrill", desc:"<b>1 Jimmy McGrill + Fritas + Suco Del Valle ou Refri lata</b>", price:4990, img:"./assets/novas-fotos/combo-jimmy-mcgrill.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(4990)]},
+      {id:"c10", name:"Combo Jimmy Chicken", desc:"<b>Jimmy Chicken + Fritas + Suco Del Valle ou Refri lata</b>", price:3990, img:"./assets/novas-fotos/combo-jimmy-chicken.png", cat:"COMBOS INDIVIDUAIS", variants:[comboDrinkVariant(3990)]},
 
       {id:"c100", name:"COMBO DUPLA PERFEITA", desc:"<b>2 Bacon Salad Smash + Fritas + nuggets (7un) + Guaraná 1L</b>", price:7990, img:"./assets/novas-fotos/combo-duplo-perfeito.png", cat:"COMBO CASAL", subcat:"Burgers de 100g"},
       {id:"c101", name:"COMBO DUPLA PERFEITA 2.0", desc:"<b>2 Bacon Salad 2.0 + Fritas + nuggets (7un) + Coca Cola 1L</b>", price:8990, img:"./assets/novas-fotos/combo-duplo-perfeito-2-0.png", cat:"COMBO CASAL", subcat:"Burgers de 150g"},
